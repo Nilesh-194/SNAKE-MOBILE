@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Level Selection Screen -->
+    <div id="levelSelection" class="level-selection">
+        <h1>Snake Game</h1>
+        <div class="difficulty-buttons">
+            <button class="btn btn--primary difficulty-btn" onclick="selectDifficulty('easy')">Easy</button>
+            <button class="btn btn--primary difficulty-btn" onclick="selectDifficulty('medium')">Medium</button>
+            <button class="btn btn--primary difficulty-btn" onclick="selectDifficulty('hard')">Hard</button>
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="gameScreen" class="game-screen hidden">
+        <div class="scoreBoard">
+            <div>Score: <span id="score">0</span></div>
+            <div>High Score: <span id="highScore">0</span></div>
+        </div>
+
+        <div class="instructions">
+            <p id="desktop-instructions" class="desktop-only">Use arrow keys to move, spacebar to pause</p>
+            <p id="mobile-instructions" class="mobile-only">Use touch controls below to move, tap pause button</p>
+        </div>
+
+        <div id="pauseIndicator" class="pause-indicator hidden">PAUSED</div>
+
+        <div id="gameContainer"></div>
+
+        <div class="game-controls">
+            <button class="btn btn--secondary" onclick="restartGame()">Restart</button>
+            <button class="btn btn--secondary" onclick="backToMenu()">Menu</button>
+        </div>
+
+        <!-- Mobile Controls -->
+        <div id="mobileControls" class="mobile-controls mobile-only">
+            <div class="mobile-buttons">
+                <button id="mobilePauseBtn" class="mobile-btn mobile-btn--pause" onclick="togglePause()">⏸️</button>
+            </div>
+            <div class="dpad">
+                <button id="btnUp" class="dpad-btn dpad-btn--up" onmousedown="changeDirection('UP')" ontouchstart="changeDirection('UP')">▲</button>
+                <div class="dpad-middle">
+                    <button id="btnLeft" class="dpad-btn dpad-btn--left" onmousedown="changeDirection('LEFT')" ontouchstart="changeDirection('LEFT')">◀</button>
+                    <div class="dpad-center"></div>
+                    <button id="btnRight" class="dpad-btn dpad-btn--right" onmousedown="changeDirection('RIGHT')" ontouchstart="changeDirection('RIGHT')">▶</button>
+                </div>
+                <button id="btnDown" class="dpad-btn dpad-btn--down" onmousedown="changeDirection('DOWN')" ontouchstart="changeDirection('DOWN')">▼</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Over Screen -->
+    <div id="gameOver" class="game-over hidden">
+        <h2>Game Over!</h2>
+        <p>Final Score: <span id="finalScore">0</span></p>
+        <div class="game-over-buttons">
+            <button class="btn btn--primary" onclick="restartGame()">Play Again</button>
+            <button class="btn btn--secondary" onclick="backToMenu()">Menu</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
